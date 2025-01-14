@@ -16,7 +16,7 @@ namespace Task_Management_System.Models.Entites
         public string Description { get; set; }
         public string AssignedToUserId { get; set; }
         [ForeignKey("AssignedToUserId")]
-        public ApplicationUsers AssignedToUser { get; set; } // NP
+        public ApplicationUser AssignedToUser { get; set; } // NP
 
         // Enum to track task state
         public TaskStatus Status { get; set; } = TaskStatus.Pending;

@@ -1,0 +1,52 @@
+﻿@model Task_Management_System.ViewModels.RegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/AuthLayout.cshtml";
+}
+
+<h1>Register</h1>
+
+<div class="main-agileinfo">
+	<div class="agileits-top">
+		<form asp-action="Register">
+			<input class="text" asp-for="FName" placeholder="First Name" required="">
+			<span asp-validation-for="FName" class="text-danger"></span>
+			<br />
+			<input class="text" asp-for="LName" placeholder="Last Name" required="">
+			<span asp-validation-for="LName" class="text-danger"></span>
+			<br />
+			<input class="text" asp-for="Email" placeholder="Email" required="">
+			<span asp-validation-for="Email" class="text-danger"></span>
+			<br />
+			<input class="text" asp-for="PhoneNumber" placeholder="Phone Number" required="">
+			<span asp-validation-for="PhoneNumber" class="text-danger"></span>
+			<br />
+			<input class="text" asp-for="Address" placeholder="Address" required="">
+			<span asp-validation-for="Address" class="text-danger"></span>
+			<br />
+			<input class="text" type="date" asp-for="DOB" placeholder="Date of Birth" required="" />
+			<span asp-validation-for="DOB" class="text-danger"></span>
+
+			<br />
+			<input class="text" asp-for="Password" placeholder=" Password" required="">
+			<span asp-validation-for="Password" class="text-danger"></span>
+			<br />
+			<input class="text" asp-for="ConfirmedPassword" placeholder="Confirmed password" required="">
+			<span asp-validation-for="ConfirmedPassword" class="text-danger"></span>
+			<br />
+			<div class="wthree-text">
+				<label class="anim">
+					<input asp-for="IsAgree" class="checkbox" required="">
+					<span>I Agree To The Terms & Conditions</span>
+				</label>
+				<div class="clear"> </div>
+			</div>
+			<input type="submit" value="SIGNUP">
+		</form>
+		<p>Do you have an Account? <a asp-action="Login"> Login Now!</a></p>
+	</div>
+</div>
+@section Scripts
+{
+	<partial name="_ValidationScriptsPartial" />
+}
