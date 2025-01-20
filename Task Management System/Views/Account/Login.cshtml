@@ -1,0 +1,35 @@
+﻿@model Task_Management_System.ViewModels.LoginViewModel
+@{
+	ViewData["Title"] = "Login";
+	Layout = "~/Views/Shared/AuthLayout.cshtml";
+}
+
+<h1>Login</h1>
+
+<div class="main-agileinfo">
+	<div class="agileits-top">
+		<form asp-action="Login">
+			
+			<input class="text" asp-for="Email" placeholder="Email" required="">
+			<span asp-validation-for="Email" class="text-danger"></span>
+			<br />
+			
+			<input class="text" asp-for="Password" placeholder=" Password" required="">
+			<span asp-validation-for="Password" class="text-danger"></span>
+			<br />
+			<div class="wthree-text">
+				<label class="anim">
+					<input asp-for="RememberMe" class="checkbox" required="">
+					<span>Remember Me</span>
+				</label>
+				<div class="clear"> </div>
+			</div>
+			<input type="submit" value="SIGNIN">
+		</form>
+		<p>Do't you have an Account? <a asp-action="Register"> SIGN UP Now!</a></p>
+	</div>
+</div>
+@section Scripts
+{
+	<partial name="_ValidationScriptsPartial" />
+}
