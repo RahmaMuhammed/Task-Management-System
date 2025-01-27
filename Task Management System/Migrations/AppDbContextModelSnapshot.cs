@@ -265,7 +265,7 @@ namespace Task_Management_System.Migrations
 
                     b.HasIndex("AssignedToUserId");
 
-                    b.ToTable("Tasks");
+                    b.ToTable("Tasks", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

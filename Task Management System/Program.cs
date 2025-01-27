@@ -8,7 +8,7 @@ namespace Task_Management_System
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -29,9 +29,17 @@ namespace Task_Management_System
                 option.Password.RequireDigit = true;
                 option.Password.RequireUppercase = true;
                 option.Password.RequireLowercase = true;
-            }).AddEntityFrameworkStores<AppDbContext>();
+            }).AddEntityFrameworkStores<AppDbContext>()
+              .AddDefaultTokenProviders();
+
 
             var app = builder.Build();
+
+            using (var scope = app.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                await Seeders.DataSeeder.SeedRolesAndAdminAsync(services);
+            }
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
@@ -49,7 +57,7 @@ namespace Task_Management_System
             app.MapStaticAssets();
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}")
+                pattern: "{controller=Account}/{action=Login}/{id?}")
                 .WithStaticAssets();
 
             app.Run();
